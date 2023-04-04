@@ -1,0 +1,48 @@
+% Attack bonuses / stats
+% number of attacks
+% to hit bonuses
+% dice definitions
+% crit bonus dmg
+% mini crit damage
+% determine AC
+% roll attack
+% determine hit, minicrit, crit, miss
+% display damage
+
+%%Bugbear
+to_hit = 4;
+added_damage = 2;
+num_atk = 1;
+damage_roll = 'd8';
+dice_amount = 2;
+party_AC = 16;  %%roll 4-13 hit 14-19 mini
+crit_range = 1;
+
+dice_size = str2num(damage_die(2:end));
+
+crit_prob = crit_range/20;
+
+mini_prob = (((10+to_hit-party_AC))/20);
+if mini_prob < 0
+    mini_prob = 0;
+end
+
+hit_prob = ((21 + to_hit - party_AC))/20 - crit_prob - mini_prob; 
+if hit_prob < 0
+    hit_prob = 0;
+end
+
+if party_AC <= to_hit
+    hit_prob = hitprob-0.05
+end
+
+
+dmg_hit = dice_amount * (dice_size+1)/2 + added_damage;
+dmg_crit = dice_amount * (dice_size+1)/2 + (dice_amount * dice_size) + added_damage;
+dmg_mini = dice_amount * dice_size + added_damage;
+
+ADA = (hit_prob * dmg_hit) + (mini_prob * dmg_mini) + (crit_prob * dmg_crit);
+
+DPR = num_atk * ADA;
+
+DPR

@@ -1,0 +1,19 @@
+%possible variation
+%=====================================================
+smite = true; % are you smiting?
+undead_fiend = true; % whether or not to add an extra die
+sacred_weapon = true; % add extra to attack?
+adv = true;
+%=====================================================
+%built-in numbers
+str_mod = 5; %Strength modifier
+hit_dice = '1d10'; %number and type of dice rolled for 1 attack
+item_dmg = 0;
+item_atk = 0;
+prof = 3; %proficiency bonus
+cha = 3; %charisma modifier
+smite_level = 1;
+fail_max = 1; %highest roll thats a crit fail
+num_attacks = 1; % number of attacks
+
+
